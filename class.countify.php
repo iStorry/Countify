@@ -8,7 +8,7 @@ class Countify {
             return $mfc[1];
         } 
         else {
-            return "Invaid Instagram Username";
+            return "Invalid Instagram Username";
         }
     }
     public static function instagram_likes($url) {
@@ -18,7 +18,7 @@ class Countify {
             return $mfc[1];
         } 
         else {
-            return "Invaid Image URL";
+            return "Invalid Image URL";
         }
     }
     public static function twitter_followers($username) {
@@ -28,7 +28,7 @@ class Countify {
             return $mfc[1];
         } 
         else {
-            return "Invaid Twitter Username";
+            return "Invalid Twitter Username";
         }
     }
     public static function twitter_retweet($url) {
@@ -38,7 +38,7 @@ class Countify {
             return $mfc[1][0];
         } 
         else {
-            return "Invaid Twitter Status";
+            return "Invalid Twitter Status";
         }
     }
     public static function twitter_fav($url) {
@@ -48,7 +48,7 @@ class Countify {
             return $mfc[1][1];
         } 
         else {
-            return "Invaid Twitter Status";
+            return "Invalid Twitter Status";
         }
     }
 }
