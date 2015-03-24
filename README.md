@@ -4,6 +4,7 @@
 
 - PHP 5.2.x or higher
 - cURL
+- 
 ### Initialize the class
 ```php
 <?php
