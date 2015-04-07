@@ -51,5 +51,40 @@ class Countify {
             return "Invalid Twitter Status";
         }
     }
+	public static function youtube_views($video_id){
+		$file = json_decode(file_get_contents("https://gdata.youtube.com/feeds/api/videos/{$video_id}?v=2&alt=json"));
+		return $file->{'entry'}->{'yt$statistics'}->{'viewCount'};
+	}
+	public static function page_likes($page){
+		$file = json_decode(file_get_contents("https://graph.facebook.com/{$page}"));
+		return $file->likes;
+	}
+	public static function photo_likes($photo_id){
+		$file = self::cURL("https://www.facebook.com/photo.php?fbid=".$photo_id);
+		preg_match('/\"likecount":(.*?)\,/', $file, $mfc);
+		if ($mfc[1]) {
+            return $mfc[1];
+        } 
+        else {
+            return "Invalid Photo ID";
+        }
+	}
+	public static function post_likes($post_url){
+		$file = self::cURL($post_url);
+		preg_match('/\"likecount":(.*?)\,/', $file, $mfc);
+		if ($mfc[1]) {
+            return $mfc[1];
+        } 
+        else {
+            return "Invalid Post";
+        }
+	}
+	private static function cURL($url){
+		       $ch = curl_init();
+                   curl_setopt($ch, CURLOPT_URL, $url);
+			       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                   curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.2) Gecko/20090729 Firefox/3.5.2 GTB5');
+               return $html = curl_exec($ch);
+	}
 }
 ?>
