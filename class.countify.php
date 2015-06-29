@@ -4,8 +4,9 @@ class Countify {
     public static function instagram_followers($username) {
         $file = @file_get_contents('http://instagram.com/' . $username);
         preg_match('/\"followed_by":(.*?)\,/', $file, $mfc);
-        if ($mfc[1]) {
-            return $mfc[1];
+        $mfc = json_decode($mfc[1],true); // Added JSON DECODE 
+        if ($mfc['count']) {
+            return $mfc['count'];
         } 
         else {
             return "Invalid Instagram Username";
@@ -13,9 +14,9 @@ class Countify {
     }
     public static function instagram_likes($url) {
         $file = @file_get_contents($url);
-        preg_match('/\"count":(.*?)\,/', $file, $mfc);
-        if ($mfc[1]) {
-            return $mfc[1];
+        preg_match_all('/\"count":(.*?)\,/', $file, $mfc); // Fixed Count
+        if ($mfc[1][1]) {
+            return $mfc[1][1];
         } 
         else {
             return "Invalid Image URL";
