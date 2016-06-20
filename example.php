@@ -3,9 +3,7 @@
    $countify = new Countify;
    echo $countify->post_likes("https://www.facebook.com/username/posts/post_id"); // Min 1 Like Required xD
    /* 
-   echo $countify->photo_likes("569448453189619");
-   echo $countify->page_likes("MicrosoftIndia");
-   echo $countify->youtube_views("Yl7Dlo9MNuo");  // Youtube Count 
+   echo $countify->youtube_views("Yl7Dlo9MNuo", "{YOUTUBE-API-KEY");  // Youtube Count 
    echo $countify->instagram_followers("instagram");  // Instagram Username ~ Return Followers Count
    echo $countify->instagram_likes("https://instagram.com/p/0GxfObTYMz/");  // Instagram Image URL ~ Return Likes Count
    echo $countify->twitter_followers("twitter");  // Twitter Username ~ Return Followers Count
